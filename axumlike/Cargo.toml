@@ -1,0 +1,81 @@
+#[package]
+#name = "axumlike"
+#version = "0.1.0"
+#edition = "2018"
+#
+## See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+#
+#[workspace]
+#members = ["examples/*"]
+#
+#[features]
+#default = ["tower-log", "headers"]
+#headers = []
+#tower-log = ["tower/log"]
+#
+#[dependencies]
+#async-trait = "0.1" # 支持在 trait 里面去写异步的 trait
+#bitflags = "1.0" # 方便处理基于位的掩码，处理位操作
+#bytes = "1.0"
+#futures-util = { version = "0.3", default-features = false, features = ["alloc"] }
+#http = "0.2"
+#http-body = "0.4.3"
+#hyper = { version = "0.14", features = ["server", "tcp", "http1", "stream"] }
+#pin-project-lite = "0.2.7"
+#regex = "1.5" # 正则
+#serde = "1.0"
+#serde_json = "1.0"
+#serde_urlencoded = "0.7"
+#tokio = { version = "1", features = ["time"] }
+#tokio-util = "0.6"
+#tower = { version = "0.4", default-features = false, features = ["util", "buffer", "make"] }
+#tower-service = "0.3"
+#tower-layer = "0.3"
+#tower-http = { version = "0.1", features = ["add-extension", "map-response-body"] }
+#sync_wrapper = "0.1.1" # 对异步的包装，对pin模式的一个模仿，可以安全地使用可变借用，可变借用可以安全传递
+#headers = "0.3.7"
+
+[package]
+name = "axumlike"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = ["examples/*"]
+
+[features]
+default = ["tower-log", "headers"]
+ws = ["tokio-tungstenite", "sha-1", "base64"]
+multipart = ["multer", "mime"]
+tower-log = ["tower/log"]
+
+[dependencies]
+async-trait = "0.1"
+bitflags = "1.0"
+bytes = "1.0"
+futures-util = { version = "0.3", default-features = false, features = ["alloc"] }
+http = "0.2"
+http-body = "0.4.3"
+hyper = { version = "0.14", features = ["server", "tcp", "http1", "stream"] }
+pin-project-lite = "0.2.7"
+regex = "1.5"
+serde = "1.0"
+serde_json = "1.0"
+serde_urlencoded = "0.7"
+tokio = { version = "1", features = ["time"] }
+tokio-util = "0.6"
+tower = { version = "0.4.8", default-features = false, features = ["util", "buffer", "make"] }
+tower-service = "0.3"
+tower-layer = "0.3"
+tower-http = { version = "0.1", features = ["add-extension", "map-response-body"] }
+sync_wrapper = "0.1.1"
+# optional features
+tokio-tungstenite = { optional = true, version = "0.15" }
+sha-1 = { optional = true, version = "0.9.6" }
+base64 = { optional = true, version = "0.13" }
+headers = { optional = true, version = "0.3" }
+multer = { optional = true, version = "2.0.0" }
+mime = { optional = true, version = "0.3" }
+
